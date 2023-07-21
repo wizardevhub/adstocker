@@ -1,0 +1,30 @@
+RPI based billboard/advertiser
+- Image files found in the root directory of a USB drive will be displayed automatically. (jpeg, png)
+- It is required to have the billboard.json file in the root directory of the USB drive. If not the USB drive will be ignored.
+- Images will be resized to full screen with & height
+- Display use HDMI-0 (resolution will be detected automatically)
+- JSON file contains the delay between images to display. Modifying this file will change the delay.
+- If the USB drive is not inserted the program will retry every 10sec to find a USB that has the billboard.json in it's root.
+- At startup there is a delay of 10sec to make sure the environment is ready if you autostart the script
+
+Instructions:
+- Save billboard.json in the root folder of a USB drive or stick
+- Save .jpeg and/or .png files in the root folder
+- run billboard_advanced.py (or configure for autostart)
+
+
+
+
+How to auto-start the script on RPI:
+note:
+- assume the user you auto login on RPI is pi (If another user is used then replace /pi with the /theUserName)
+- assume your script is in /home/pi/billboard/code
+
+mkdir /home/pi/.config/autostart
+nano /home/pi/.config/autostart/billboard.dekstop
+Add the following to the file:
+[Desktop Entry]
+Type= Application
+Name=Bilboard
+Exec=/usr/bin/python3 /home/pi/billboard/code/billboard_advanced.py
+
